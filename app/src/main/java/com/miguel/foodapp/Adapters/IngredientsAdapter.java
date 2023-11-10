@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.miguel.foodapp.Models.ExtendedIngredient;
 import com.miguel.foodapp.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -32,12 +33,16 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsViewHold
 
     @Override
     public void onBindViewHolder(@NonNull IngredientsViewHolder holder, int position) {
-
+        holder.textView_ingredients_name.setText(list.get(position).name);
+        holder.textView_ingredients_name.setSelected(true);
+        holder.textView_ingredients_quantity.setText(list.get(position).original);
+        holder.textView_ingredients_quantity.setSelected(true);
+        Picasso.get().load("https://spoonacular.com/cdn/ingredients_100x100/"+ list.get(position).image).into(holder.imageView_ingredients);
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return list.size();
     }
 }
 
